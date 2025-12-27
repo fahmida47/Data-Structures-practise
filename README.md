@@ -1,2 +1,2 @@
 # Data-Structures-practise
-https://github.com/fahmida47/Data-Structures-practise
+https://fahmida47.github.io/Data-Structures-practise/

@@ -163,33 +163,4 @@ int main() {
         cout << x << " ";
 }
 
-//------------------------------------------------------------Highest marks student----------------------------------------------------//
-#include <bits/stdc++.h>
-using namespace std;
-
-int main() {
-    int n;
-    cin >> n;
-
-    vector< tuple<string,int,int,string,double> > v;
-
-    for(int i = 0; i < n; i++) {
-        string name, location;
-        int age, id;
-        double marks;
-        cin >> name >> age >> id >> location >> marks;
-        v.push_back(make_tuple(name, age, id, location, marks));
-    }
-
-    int idx = 0;
-    for(int i = 1; i < v.size(); i++) {
-        if(get<4>(v[i]) > get<4>(v[idx])) {
-            idx = i;
-        }
-    }
-
-    cout << "Top Student: "
-         << get<0>(v[idx]) << " "
-         << get<4>(v[idx]) << endl;
-}
 

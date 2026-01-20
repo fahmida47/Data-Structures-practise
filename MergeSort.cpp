@@ -1,65 +1,64 @@
 ///Merge Sort
-
 #include<bits/stdc++.h>
 using namespace std;
 
-void Merge(int arr[], int left, int mid, int right)
+void Merge(vector<int>& arr, int left, int mid, int right)
 {
     int m = mid - left + 1;
     int n = right - mid;
 
-    int L[m+1], R[n+1]; 
+    vector<int> L(m+1), R(n+1);
 
-    for (int i = 0; i < m; i++)
+    for(int i = 0; i < m; i++)
         L[i] = arr[left + i];
-
-    for (int j = 0; j < n; j++)
+    for(int j = 0; j < n; j++)
         R[j] = arr[mid + 1 + j];
-        
+
     L[m] = INT_MAX;
     R[n] = INT_MAX;
 
     int i = 0, j = 0;
-    for (int k = left; k <= right; k++) {
-        if (L[i] <= R[j]) {
+    for(int k = left; k <= right; k++)
+    {
+        if(L[i] <= R[j])
             arr[k] = L[i++];
-        } else {
+        else
             arr[k] = R[j++];
-        }
     }
 }
 
-void MergeSort(int arr[], int left, int right)
+void MergeSort(vector<int>& arr, int left, int right)
 {
-    if (left < right) {
+    if(left < right)
+    {
         int mid = (left + right) / 2;
-        MergeSort(arr, left, mid);     // বাম দিক
-        MergeSort(arr, mid + 1, right); // ডান দিক
-        Merge(arr, left, mid, right);   // Merge
+        MergeSort(arr, left, mid);
+        MergeSort(arr, mid+1, right);
+        Merge(arr, left, mid, right);
     }
 }
-int main() {
-    
 
-    cout<<"Enter num: ";
+int main()
+{
     int num;
-    cin>>num;
+    cout << "Enter num: ";
+    cin >> num;
 
-    cout<<"Enter Element: ";
-    int arr[num];
+    vector<int> arr(num);
+    cout << "Enter elements: ";
+    for(int i = 0; i < num; i++)
+        cin >> arr[i];
 
-    for(int i=0;i<num;i++)
-    {
-        cin>>arr[i];
-    }
+    if(num > 0)
+        MergeSort(arr, 0, num-1);
 
-    MergeSort(arr,0,num-1);
+    cout << "Sorted array: ";
+    for(int x : arr)
+        cout << x << " ";
 
-    for(int i=0;i<num;i++)
-    {
-        cout<<arr[i]<<" ";
-    }
+    return 0;
 }
+
 
 // Merge Sort Even odd
 
@@ -133,4 +132,5 @@ int main()
 
     return 0;
 }
+
 
